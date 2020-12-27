@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A81600F62598690B0005BDC6 /* ImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81600F52598690B0005BDC6 /* ImageServiceProtocol.swift */; };
+		A81600FE2598694B0005BDC6 /* ImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81600FD2598694B0005BDC6 /* ImageEntity.swift */; };
+		A8160103259869660005BDC6 /* PixbayImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8160102259869660005BDC6 /* PixbayImageService.swift */; };
+		A81601082598698A0005BDC6 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81601072598698A0005BDC6 /* ImageViewModel.swift */; };
 		A8228814259713E900D69942 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8228813259713E900D69942 /* AppDelegate.swift */; };
 		A8228816259713E900D69942 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8228815259713E900D69942 /* SceneDelegate.swift */; };
-		A8228818259713E900D69942 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8228817259713E900D69942 /* ViewController.swift */; };
+		A8228818259713E900D69942 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8228817259713E900D69942 /* SearchViewController.swift */; };
 		A822881B259713E900D69942 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8228819259713E900D69942 /* Main.storyboard */; };
 		A822881D259713E900D69942 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A822881C259713E900D69942 /* Assets.xcassets */; };
 		A8228820259713E900D69942 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A822881E259713E900D69942 /* LaunchScreen.storyboard */; };
 		A822882B259713EA00D69942 /* PixabayImagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A822882A259713EA00D69942 /* PixabayImagesTests.swift */; };
 		A8228836259713EA00D69942 /* PixabayImagesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8228835259713EA00D69942 /* PixabayImagesUITests.swift */; };
+		A8228850259714A300D69942 /* ImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A822884F259714A300D69942 /* ImagesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A81600F52598690B0005BDC6 /* ImageServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServiceProtocol.swift; sourceTree = "<group>"; };
+		A81600FD2598694B0005BDC6 /* ImageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEntity.swift; sourceTree = "<group>"; };
+		A8160102259869660005BDC6 /* PixbayImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixbayImageService.swift; sourceTree = "<group>"; };
+		A81601072598698A0005BDC6 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		A8228810259713E900D69942 /* PixabayImages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixabayImages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8228813259713E900D69942 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8228815259713E900D69942 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A8228817259713E900D69942 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A8228817259713E900D69942 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A822881A259713E900D69942 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A822881C259713E900D69942 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A822881F259713E900D69942 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +58,7 @@
 		A8228831259713EA00D69942 /* PixabayImagesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PixabayImagesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8228835259713EA00D69942 /* PixabayImagesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabayImagesUITests.swift; sourceTree = "<group>"; };
 		A8228837259713EA00D69942 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A822884F259714A300D69942 /* ImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A81600F4259868F10005BDC6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A81600F52598690B0005BDC6 /* ImageServiceProtocol.swift */,
+				A8160102259869660005BDC6 /* PixbayImageService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		A8228807259713E900D69942 = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +118,12 @@
 		A8228812259713E900D69942 /* PixabayImages */ = {
 			isa = PBXGroup;
 			children = (
+				A81600F4259868F10005BDC6 /* Networking */,
+				A822884E2597145100D69942 /* Models */,
+				A822884D2597144B00D69942 /* ViewModels */,
+				A822884C2597144300D69942 /* Views */,
 				A8228813259713E900D69942 /* AppDelegate.swift */,
 				A8228815259713E900D69942 /* SceneDelegate.swift */,
-				A8228817259713E900D69942 /* ViewController.swift */,
 				A8228819259713E900D69942 /* Main.storyboard */,
 				A822881C259713E900D69942 /* Assets.xcassets */,
 				A822881E259713E900D69942 /* LaunchScreen.storyboard */,
@@ -126,6 +148,31 @@
 				A8228837259713EA00D69942 /* Info.plist */,
 			);
 			path = PixabayImagesUITests;
+			sourceTree = "<group>";
+		};
+		A822884C2597144300D69942 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A8228817259713E900D69942 /* SearchViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A822884D2597144B00D69942 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A822884F259714A300D69942 /* ImagesViewModel.swift */,
+				A81601072598698A0005BDC6 /* ImageViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A822884E2597145100D69942 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A81600FD2598694B0005BDC6 /* ImageEntity.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +305,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8228818259713E900D69942 /* ViewController.swift in Sources */,
+				A81600FE2598694B0005BDC6 /* ImageEntity.swift in Sources */,
+				A8160103259869660005BDC6 /* PixbayImageService.swift in Sources */,
+				A8228818259713E900D69942 /* SearchViewController.swift in Sources */,
 				A8228814259713E900D69942 /* AppDelegate.swift in Sources */,
+				A81600F62598690B0005BDC6 /* ImageServiceProtocol.swift in Sources */,
+				A8228850259714A300D69942 /* ImagesViewModel.swift in Sources */,
+				A81601082598698A0005BDC6 /* ImageViewModel.swift in Sources */,
 				A8228816259713E900D69942 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +491,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YG4U6S73S9;
 				INFOPLIST_FILE = PixabayImages/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,6 +511,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YG4U6S73S9;
 				INFOPLIST_FILE = PixabayImages/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
