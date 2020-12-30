@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,9 @@
 		A81600FE2598694B0005BDC6 /* ImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81600FD2598694B0005BDC6 /* ImageEntity.swift */; };
 		A8160103259869660005BDC6 /* PixbayImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8160102259869660005BDC6 /* PixbayImageService.swift */; };
 		A81601082598698A0005BDC6 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81601072598698A0005BDC6 /* ImageViewModel.swift */; };
+		A8160124259B183D0005BDC6 /* RevealServer.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8160123259B183D0005BDC6 /* RevealServer.xcframework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A8160125259B183D0005BDC6 /* RevealServer.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8160123259B183D0005BDC6 /* RevealServer.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8160130259CC6B70005BDC6 /* ImageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A816012F259CC6B70005BDC6 /* ImageCellView.swift */; };
 		A8228814259713E900D69942 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8228813259713E900D69942 /* AppDelegate.swift */; };
 		A8228816259713E900D69942 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8228815259713E900D69942 /* SceneDelegate.swift */; };
 		A8228818259713E900D69942 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8228817259713E900D69942 /* SearchViewController.swift */; };
@@ -39,11 +42,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A8160126259B183D0005BDC6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A8160125259B183D0005BDC6 /* RevealServer.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A81600F52598690B0005BDC6 /* ImageServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServiceProtocol.swift; sourceTree = "<group>"; };
 		A81600FD2598694B0005BDC6 /* ImageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEntity.swift; sourceTree = "<group>"; };
 		A8160102259869660005BDC6 /* PixbayImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixbayImageService.swift; sourceTree = "<group>"; };
 		A81601072598698A0005BDC6 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
+		A8160123259B183D0005BDC6 /* RevealServer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = RevealServer.xcframework; sourceTree = "<group>"; };
+		A816012F259CC6B70005BDC6 /* ImageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellView.swift; sourceTree = "<group>"; };
 		A8228810259713E900D69942 /* PixabayImages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixabayImages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8228813259713E900D69942 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8228815259713E900D69942 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8160124259B183D0005BDC6 /* RevealServer.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +115,22 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		A8160122259B183D0005BDC6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8160123259B183D0005BDC6 /* RevealServer.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A816012E259CC6AB0005BDC6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A816012F259CC6B70005BDC6 /* ImageCellView.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A8228807259713E900D69942 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +138,7 @@
 				A8228829259713EA00D69942 /* PixabayImagesTests */,
 				A8228834259713EA00D69942 /* PixabayImagesUITests */,
 				A8228811259713E900D69942 /* Products */,
+				A8160122259B183D0005BDC6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +190,7 @@
 		A822884C2597144300D69942 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A816012E259CC6AB0005BDC6 /* Cells */,
 				A8228817259713E900D69942 /* SearchViewController.swift */,
 			);
 			path = Views;
@@ -185,6 +223,8 @@
 				A822880C259713E900D69942 /* Sources */,
 				A822880D259713E900D69942 /* Frameworks */,
 				A822880E259713E900D69942 /* Resources */,
+				A8160126259B183D0005BDC6 /* Embed Frameworks */,
+				A8160129259B186B0005BDC6 /* Integrate Reveal Server */,
 			);
 			buildRules = (
 			);
@@ -300,6 +340,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A8160129259B186B0005BDC6 /* Integrate Reveal Server */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Integrate Reveal Server";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export REVEAL_SERVER_FILENAME=\"RevealServer.xcframework\"\n\n# Update this path to point to the location of RevealServer.xcframework in your project.\nexport REVEAL_SERVER_PATH=\"${SRCROOT}/${REVEAL_SERVER_FILENAME}\"\n\n# If RevealServer.xcframework exists at the specified path, run the integration script.\nif [ -d \"${REVEAL_SERVER_PATH}\" ]; then\n \"${REVEAL_SERVER_PATH}/Scripts/integrate_revealserver.sh\"\nelse\n echo \"Reveal Server not loaded into ${TARGET_NAME}: ${REVEAL_SERVER_FILENAME} could not be found.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A822880C259713E900D69942 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -311,6 +372,7 @@
 				A8228814259713E900D69942 /* AppDelegate.swift in Sources */,
 				A81600F62598690B0005BDC6 /* ImageServiceProtocol.swift in Sources */,
 				A8228850259714A300D69942 /* ImagesViewModel.swift in Sources */,
+				A8160130259CC6B70005BDC6 /* ImageCellView.swift in Sources */,
 				A81601082598698A0005BDC6 /* ImageViewModel.swift in Sources */,
 				A8228816259713E900D69942 /* SceneDelegate.swift in Sources */,
 			);

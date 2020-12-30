@@ -24,7 +24,7 @@ class ImagesViewModel: ObservableObject {
     }
     
     private func fetchImages(with query: String) {
-        imagesService.queryImages(query).sink { (completion) in
+        imagesService.queryImages(with: query, pageNumber: 1, imagesPerPage: 20).sink { (completion) in
             switch completion {
             case .finished:
                 print("task has finished")

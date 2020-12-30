@@ -11,23 +11,70 @@ import Combine
 class SearchImagesViewController: UIViewController {
     
     @IBOutlet weak var searchBarView: UISearchBar!
+    
     private var subscriptions: Set<AnyCancellable> = []
-    let viewModel: ImagesViewModel = ImagesViewModel()
+    private let viewModel: ImagesViewModel = ImagesViewModel()
+    
+    lazy var tableView: UITableView = {
+        let view = UITableView()
+        view.register(ImageViewCell.self, forCellReuseIdentifier: ImageViewCell.identifier)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.rowHeight = UITableView.automaticDimension
+        view.estimatedRowHeight = UITableView.automaticDimension
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        bindViewModel()
+
+        setUpSearchBar()
+        setUpTableView()
+    }
+    
+    func bindViewModel() {
+        viewModel.$imageViewModels
+            .receive(on: RunLoop.main)
+            .sink { [weak self] (images) in
+                self?.tableView.reloadData()
+            }
+        .store(in: &subscriptions)
+    }
+    
+    func setUpSearchBar() {
         searchBarView.searchTextField.textPublisher
             .debounce(for: 0.5, scheduler: RunLoop.main)
             .removeDuplicates()
             .assign(to: \.inputQuery, on: viewModel)
             .store(in: &subscriptions)
-        bindViewModel()
     }
     
-    func bindViewModel() {
-        viewModel.$imageViewModels.sink { (images) in
-            print("images: \(images)")
-        }.store(in: &subscriptions)
+    func setUpTableView() {
+        let margins = view.safeAreaLayoutGuide
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: searchBarView.bottomAnchor, constant: 8),
+            tableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
+        ])
+    }
+}
+
+extension SearchImagesViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.imageViewModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ImageViewCell.identifier, for: indexPath) as! ImageViewCell
+        cell.viewModel = viewModel.imageViewModel(at: indexPath)
+        return cell
     }
 }
 

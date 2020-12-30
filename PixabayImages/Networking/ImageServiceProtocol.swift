@@ -9,6 +9,8 @@ import Foundation
 import Combine
 
 protocol ImageServiceProtocol {
-    func queryImages(_ query: String) -> AnyPublisher<[ImageEntity], Error>
+    
+    func queryImages(with query: String, pageNumber: Int, imagesPerPage: Int) -> AnyPublisher<[ImageEntity], Error>
+    
 }
 
