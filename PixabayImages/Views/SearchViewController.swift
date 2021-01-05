@@ -43,6 +43,7 @@ class SearchImagesViewController: UIViewController {
     }
     
     func setUpSearchBar() {
+        searchBarView.searchTextField.returnKeyType = .done
         searchBarView.searchTextField.textPublisher
             .debounce(for: 0.5, scheduler: RunLoop.main)
             .removeDuplicates()
@@ -77,6 +78,33 @@ extension SearchImagesViewController: UITableViewDataSource, UITableViewDelegate
         return cell
     }
 }
+
+/// Another way to adjust cell's height based on imageSize
+//extension SearchImagesViewController {
+//  var sizes: [URL: CGSize] = [:]
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: ImageViewCell.identifier, for: indexPath) as! ImageViewCell
+//        cell.viewModel = viewModel.imageViewModel(at: indexPath)
+//        cell.completion = { [unowned self] in
+//            if self.sizes[viewModel.imageViewModel(at: indexPath).imageURL!] == nil {
+//                self.sizes[self.viewModel.imageViewModel(at: indexPath).imageURL!] = viewModel.imageViewModel(at: indexPath).imageSize
+//                tableView.reloadRows(at: [indexPath], with: .automatic)
+//            }
+//        }
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        guard let imageSize = sizes[viewModel.imageViewModel(at: indexPath).imageURL!] else {
+//            return UITableView.automaticDimension
+//        }
+//        let screenW = tableView.frame.width
+//        let scale = screenW / imageSize.width
+//        let nHeight = scale * imageSize.height
+//        let ratio = nHeight / screenW
+//        return nHeight
+//    }
+//}
 
 extension UITextField {
     var textPublisher: AnyPublisher<String, Never> {

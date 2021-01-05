@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import Combine
 import UIKit
 
 class ImageViewCell: UITableViewCell {
     
     static let identifier = String(describing: ImageViewCell.self)
     private var aspectConstraint: NSLayoutConstraint!
+    private var subscription: Cancellable!
     
     lazy var mainImageView: UIImageView = {
         let view = UIImageView()
@@ -53,7 +55,7 @@ class ImageViewCell: UITableViewCell {
         if aspectConstraint != nil {
             mainImageView.removeConstraint(aspectConstraint)
         }
-        
+        subscription.cancel()
         mainImageView.image = nil
     }
     
@@ -89,7 +91,7 @@ class ImageViewCell: UITableViewCell {
         
         //aspect constraint
         aspectConstraint = mainImageView.heightAnchor.constraint(equalTo: mainImageView.widthAnchor, multiplier: viewModel.aspectRatio)
-        print("ratio:", viewModel.aspectRatio)
+//        print("ratio:", viewModel.aspectRatio)
         aspectConstraint.priority = .init(999)
         aspectConstraint.accessibilityLabel = "aspectConstraint"
         aspectConstraint.identifier = "aspectConstraint"
@@ -99,19 +101,15 @@ class ImageViewCell: UITableViewCell {
             return
         }
         
-        DispatchQueue.global(qos: .background).async {
-            if let data = try? Data(contentsOf: imageURL), let image = UIImage(data: data) {
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else {
-                        return
-                    }
-                    if imageURL == self.viewModel.imageURL {
-                        self.mainImageView.image = image
-                    }
-                }
+        subscription = viewModel
+            .fetchImage()
+            .filter { _ in
+                assert(imageURL == self.viewModel.imageURL)
+                return imageURL == self.viewModel.imageURL
             }
-        }
-    
+            .assertNoFailure()
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.image, on: mainImageView)
     }
     
     func printViewHierarchy(_ view: UIView) {
@@ -122,3 +120,5 @@ class ImageViewCell: UITableViewCell {
         }
     }
 }
+
+

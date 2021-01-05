@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Combine
 import UIKit
 
-struct ImageViewModel {
+class ImageViewModel {
     private let imageEntity: ImageEntity
+    private let imageLoader: ImageLoader
     
     var likeText: String {
         return "❤️ \(imageEntity.likes)"
@@ -31,8 +33,17 @@ struct ImageViewModel {
         return URL(string: imageEntity.largeImageURL)
     }
     
-    init(imageEntity: ImageEntity) {
+    init(imageEntity: ImageEntity, imageLoader: ImageLoader) {
         self.imageEntity = imageEntity
+        self.imageLoader = imageLoader
+    }
+    
+    func fetchImage() -> AnyPublisher<UIImage?, ImageLoaderError> {
+        guard let url = imageURL else {
+            return Combine.Empty().eraseToAnyPublisher()
+        }
+        return imageLoader.loadImage(with: url)
+            .eraseToAnyPublisher()
     }
     
     

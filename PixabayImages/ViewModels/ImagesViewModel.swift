@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class ImagesViewModel: ObservableObject {
-    @Published var inputQuery: String = ""
+    @Published var inputQuery: String = "Apple"
     @Published private(set) var imageViewModels: [ImageViewModel] = []
 
     private var subscriptions: Set<AnyCancellable> = []
@@ -24,7 +24,9 @@ class ImagesViewModel: ObservableObject {
     }
     
     private func fetchImages(with query: String) {
-        imagesService.queryImages(with: query, pageNumber: 1, imagesPerPage: 20).sink { (completion) in
+//        let loader = KingfisherLoader()
+        let loader = BuiltInImageLoader(imageStorage: BuiltInImageStorage())
+        imagesService.queryImages(with: query, pageNumber: 1, imagesPerPage: 100).sink { (completion) in
             switch completion {
             case .finished:
                 print("task has finished")
@@ -32,7 +34,7 @@ class ImagesViewModel: ObservableObject {
                 print("task has finished with error: \(error)")
             }
         } receiveValue: { [weak self] (images) in
-            self?.imageViewModels = images.map { ImageViewModel(imageEntity: $0) }
+            self?.imageViewModels = images.map { ImageViewModel(imageEntity: $0, imageLoader: loader) }
         }.store(in: &subscriptions)
 
     }
