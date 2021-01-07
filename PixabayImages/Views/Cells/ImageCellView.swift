@@ -56,6 +56,7 @@ class ImageViewCell: UITableViewCell {
             mainImageView.removeConstraint(aspectConstraint)
         }
         subscription.cancel()
+        subscription = nil
         mainImageView.image = nil
     }
     
@@ -100,15 +101,22 @@ class ImageViewCell: UITableViewCell {
         guard let imageURL = viewModel.imageURL else {
             return
         }
-        
+        // Calculate frames
+        if mainImageView.bounds.size == .zero {
+            mainImageView.setNeedsLayout()
+            mainImageView.layoutIfNeeded()
+        }
         subscription = viewModel
-            .fetchImage()
+            .fetchImage(for: mainImageView.bounds.size)
             .filter { _ in
-                assert(imageURL == self.viewModel.imageURL)
+//                assert(imageURL == self.viewModel.imageURL)
                 return imageURL == self.viewModel.imageURL
             }
             .assertNoFailure()
             .receive(on: DispatchQueue.main)
+            .handleEvents(receiveOutput: { [weak self] value in
+                self?.likeLabel.text = "size: \(value!.size)"
+            })
             .assign(to: \.image, on: mainImageView)
     }
     

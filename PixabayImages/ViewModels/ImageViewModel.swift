@@ -38,11 +38,11 @@ class ImageViewModel {
         self.imageLoader = imageLoader
     }
     
-    func fetchImage() -> AnyPublisher<UIImage?, ImageLoaderError> {
+    func fetchImage(for size: CGSize) -> AnyPublisher<UIImage?, ImageLoaderError> {
         guard let url = imageURL else {
             return Combine.Empty().eraseToAnyPublisher()
         }
-        return imageLoader.loadImage(with: url)
+        return imageLoader.loadImage(with: url, for: size)
             .eraseToAnyPublisher()
     }
     

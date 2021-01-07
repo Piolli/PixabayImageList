@@ -35,7 +35,7 @@ class SearchImagesViewController: UIViewController {
     
     func bindViewModel() {
         viewModel.$imageViewModels
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] (images) in
                 self?.tableView.reloadData()
             }

@@ -24,7 +24,7 @@ class BuiltInImageStorage: ImageStorage {
     let cache = NSCache<AnyObject, UIImage>()
     
     init() {
-        cache.countLimit = 20
+        cache.countLimit = 100
     }
     
     func save(image: UIImage, for key: URL) {
@@ -38,7 +38,8 @@ class BuiltInImageStorage: ImageStorage {
             } else {
                 promise(.failure(.emptyCache))
             }
-        }.subscribe(on: DispatchQueue.global())
+        }
+        .subscribe(on: DispatchQueue.global(qos: .userInitiated))
         .eraseToAnyPublisher()
     }
 }
