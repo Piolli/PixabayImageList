@@ -11,6 +11,7 @@ Photo gallery with photos from Pixabay
 ## Features
 - [x] Image cache
 - [x] Image downsampling
-- [ ] Activity indicator
+- [x] Activity indicator
 - [ ] Infinite UITableView
+- [ ] UICollectionView with flow layout
 - [ ] Offline mode
