@@ -21,6 +21,12 @@ class ImageViewCell: UITableViewCell {
         return view
     }()
     
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var likeLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -83,6 +89,16 @@ class ImageViewCell: UITableViewCell {
             likeLabel.widthAnchor.constraint(equalTo: downloadsLabel.widthAnchor),
             likeLabel.trailingAnchor.constraint(equalTo: downloadsLabel.leadingAnchor, constant: 8)
         ])
+        
+        setUpActivityIndicator()
+    }
+    
+    private func setUpActivityIndicator() {
+        mainImageView.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: mainImageView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: mainImageView.centerYAnchor),
+        ])
     }
     
     private func setUpViewModel() {
@@ -114,8 +130,14 @@ class ImageViewCell: UITableViewCell {
             }
             .assertNoFailure()
             .receive(on: DispatchQueue.main)
-            .handleEvents(receiveOutput: { [weak self] value in
+            .handleEvents(receiveSubscription: { [weak self] sub in
+                DispatchQueue.main.async {
+                    self?.activityIndicator.startAnimating()
+                }
+            }, receiveOutput: { [weak self] value in
                 self?.likeLabel.text = "size: \(value!.size)"
+            }, receiveCompletion: { [weak self] (completion) in
+                self?.activityIndicator.stopAnimating()
             })
             .assign(to: \.image, on: mainImageView)
     }
